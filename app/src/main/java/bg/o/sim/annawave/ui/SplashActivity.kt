@@ -1,4 +1,4 @@
-package bg.o.sim.annawave
+package bg.o.sim.annawave.ui
 
 import android.app.Activity
 import android.app.ActivityOptions
@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View.*
 import android.widget.ImageView
+import bg.o.sim.annawave.R
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.lang.ref.WeakReference
 

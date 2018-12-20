@@ -10,4 +10,4 @@
     android:src="@drawable/software_group_logo_white"
     android:theme="@style/SplashActivityTheme"
     android:transitionName="@string/transition_name_logo"
-    tools:context=".SplashActivity" />
+    tools:context=".ui.SplashActivity" />
