@@ -15,13 +15,13 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/statusBarHeight"
-            android:background="@drawable/gradient_splash" />
+            android:background="@drawable/gradient_toolbar" />
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
-            android:background="@drawable/gradient_splash"
+            android:background="@drawable/gradient_toolbar"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
             <ImageView
