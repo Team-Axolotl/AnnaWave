@@ -2,8 +2,8 @@ package bg.o.sim.annawave.ui
 
 import android.graphics.Color
 import android.os.Bundle
-import android.support.design.card.MaterialCardView
-import android.support.v4.app.Fragment
+import com.google.android.material.card.MaterialCardView
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,7 +13,7 @@ import android.widget.TextView
 import bg.o.sim.annawave.R
 import bg.o.sim.annawave.storage.loggedInPerson
 
-class DashboardReportFragment : Fragment() {
+class DashboardReportFragment : androidx.fragment.app.Fragment() {
 
     companion object {
         fun newInstance() = DashboardReportFragment()

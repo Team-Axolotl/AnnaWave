@@ -2,8 +2,8 @@ package com.softwaregroup.underthekotlintree.util
 
 import android.app.Activity
 import android.content.Intent
-import android.support.annotation.StringRes
-import android.support.design.widget.Snackbar
+import androidx.annotation.StringRes
+import com.google.android.material.snackbar.Snackbar
 import android.widget.Toast
 import bg.o.sim.annawave.networking.HttpCallResponse
 import bg.o.sim.annawave.networking.RpcException
