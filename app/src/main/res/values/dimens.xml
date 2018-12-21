@@ -7,4 +7,7 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="paddingNormal">8dp</dimen>
     <dimen name="statusBarHeight">25dp</dimen>
+    <dimen name="radiusNormal">8dp</dimen>
+    <dimen name="elevationNormal">4dp</dimen>
+    <dimen name="spacingMid">14dp</dimen>
 </resources>

@@ -1,6 +1,7 @@
 package bg.o.sim.annawave.networking
 
 import android.os.AsyncTask
+import android.util.Log
 import retrofit2.Call
 import retrofit2.Response
 import java.net.ConnectException
@@ -32,7 +33,13 @@ class HttpAsyncTask<T>(private inline val onResult: (HttpCallResponse<T>) -> Uni
                     if (response!!.code() == ErrorCode.BAD_REQUEST.code) ErrorCode.BAD_REQUEST
                     else throw ex
                 }
-                else -> throw ex
+                // TODO FIXME STOPSHIP - temp until fix Socket T-Os
+                else -> {
+                    Log.e("fata", "FML: ", ex)
+                    ErrorCode.CONNECT_FAIL
+                }
+
+//                else -> throw ex
             }
 
             HttpCallResponse.error(errorCode, ex, call)

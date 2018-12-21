@@ -30,6 +30,8 @@ class DashboardActivity : AppCompatActivity(), NavigationView.OnNavigationItemSe
         toggle.syncState()
 
         nav_view.setNavigationItemSelectedListener(this)
+
+        supportFragmentManager.beginTransaction().replace(R.id.dashboard_content_container, DashboardReportFragment.newInstance()).commit()
     }
 
     override fun onBackPressed() {

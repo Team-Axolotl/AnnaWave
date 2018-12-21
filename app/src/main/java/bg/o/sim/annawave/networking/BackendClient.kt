@@ -21,11 +21,13 @@ enum class ErrorCode(val code: Int, val messageStringId: Int) {
 
 /** Client configuration for the [backendService] */
 val BACKEND_CLIENT: OkHttpClient = OkHttpClient.Builder()
-        .connectTimeout(30_000, TimeUnit.MILLISECONDS)
-        .readTimeout(30_000, TimeUnit.MILLISECONDS)
-        .addInterceptor(HttpLoggingInterceptor{ Log.d(HTTP_LOG, "\n $it \n")}.setLevel(HttpLoggingInterceptor.Level.BODY))
-        .addInterceptor(AuthInterceptor())
-        .build()
+    .connectTimeout(30_000, TimeUnit.MILLISECONDS)
+    .readTimeout(30_000, TimeUnit.MILLISECONDS)
+    .callTimeout(30_000, TimeUnit.MILLISECONDS)
+    .writeTimeout(30_000, TimeUnit.MILLISECONDS)
+    .addInterceptor(HttpLoggingInterceptor { Log.d(HTTP_LOG, "\n $it \n") }.setLevel(HttpLoggingInterceptor.Level.BODY))
+    .addInterceptor(AuthInterceptor())
+    .build()
 
 /** Request interceptor for injecting the jwt/xsrf cookie once logged-in */
 class AuthInterceptor : Interceptor {
@@ -43,7 +45,7 @@ class AuthInterceptor : Interceptor {
 //        if (cookie.isBlank()) cookie = getCookie()
         val request = chain.request().newBuilder()
 //                .header("Cookie", cookie)
-                .build()
+            .build()
 
         return chain.proceed(request)
     }

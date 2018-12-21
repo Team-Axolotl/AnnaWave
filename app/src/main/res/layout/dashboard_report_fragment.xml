@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/spacingMid"
+    tools:context=".ui.DashboardReportFragment">
+
+    <include
+        android:id="@+id/card_report_loan_apps"
+        layout="@layout/card_dashboard_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/card_report_loans"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <include
+        android:id="@+id/card_report_loans"
+        layout="@layout/card_dashboard_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/card_report_accounts"
+        app:layout_constraintStart_toEndOf="@+id/card_report_loan_apps" />
+
+    <include
+        android:id="@+id/card_report_accounts"
+        layout="@layout/card_dashboard_report"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/card_report_loans" />
+
+</android.support.constraint.ConstraintLayout>

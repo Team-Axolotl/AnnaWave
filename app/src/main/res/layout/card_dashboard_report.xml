@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.MaterialComponents.CardView"
+    android:layout_width="wrap_content"
+    app:cardCornerRadius="6dp"
+    app:cardElevation="@dimen/elevationNormal"
+    android:layout_height="wrap_content">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="300dp"
+        android:minHeight="110dp">
+
+        <android.support.constraint.Guideline
+            android:id="@+id/guide_horizontal_middle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.5" />
+
+        <View
+            android:id="@+id/top_half"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/guide_horizontal_middle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:background="@drawable/gradient_toolbar" />
+
+        <android.support.v7.widget.CardView
+            android:id="@+id/cardView"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginStart="@dimen/spacingMid"
+            app:cardCornerRadius="25dp"
+            app:layout_constraintBottom_toTopOf="@id/guide_horizontal_middle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/guide_horizontal_middle">
+
+            <ImageView
+                android:id="@+id/icon"
+                android:layout_width="23dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacingMid"
+                android:scaleType="fitCenter"
+                android:src="@drawable/loan_applications_nav" />
+        </android.support.v7.widget.CardView>
+
+        <TextView
+            android:id="@+id/text_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:fontFamily="sans-serif"
+            android:lineSpacingExtra="9sp"
+            android:textColor="#ffffff"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/guide_horizontal_middle"
+            app:layout_constraintEnd_toEndOf="@+id/top_half"
+            app:layout_constraintStart_toEndOf="@id/cardView"
+            tools:text="Loan Applications" />
+
+        <TextView
+            android:id="@+id/text_count"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:fontFamily="sans-serif-medium"
+            android:lineSpacingExtra="3sp"
+            android:textSize="26sp"
+            android:textStyle="normal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/cardView"
+            app:layout_constraintTop_toTopOf="@id/guide_horizontal_middle"
+            tools:text="70"
+            tools:textColor="#1b7efa" />
+
+    </android.support.constraint.ConstraintLayout>
+    <!--app:cardCornerRadius="@dimen/radiusNormal"-->
+    <!--android:elevation="@dimen/elevationNormal"-->
+
+
+</android.support.design.card.MaterialCardView>

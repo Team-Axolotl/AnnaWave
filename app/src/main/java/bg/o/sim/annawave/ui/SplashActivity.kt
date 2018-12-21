@@ -49,7 +49,6 @@ class SplashActivity : AppCompatActivity() {
                 val activityOptions = ActivityOptions.makeSceneTransitionAnimation(contextReference.get(), logoView, viewTransitionName)
 
                 val intent = Intent(activity, DashboardActivity::class.java)
-//                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
                 activity.startActivity(intent, activityOptions.toBundle())
             }
