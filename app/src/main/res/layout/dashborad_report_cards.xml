@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <include
+        android:id="@+id/card_report_loan_apps"
+        layout="@layout/card_dashboard_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacingMid"
+        app:layout_constraintBottom_toTopOf="@+id/card_report_loans"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/card_report_loans"
+        layout="@layout/card_dashboard_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacingMid"
+        app:layout_constraintTop_toBottomOf="@+id/card_report_loan_apps" />
+
+    <include
+        android:id="@+id/card_report_accounts"
+        layout="@layout/card_dashboard_report"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacingMid"
+        app:layout_constraintTop_toBottomOf="@+id/card_report_loans" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
