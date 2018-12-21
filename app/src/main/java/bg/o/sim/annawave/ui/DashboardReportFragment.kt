@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.cardview.widget.CardView
 
 import bg.o.sim.annawave.R
 import bg.o.sim.annawave.storage.loggedInPerson
@@ -22,9 +23,9 @@ class DashboardReportFragment : androidx.fragment.app.Fragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.dashboard_report_fragment, container, false)
 
-        val cardLoanApps: MaterialCardView = view.findViewById(R.id.card_report_loan_apps)
-        val cardLoans: MaterialCardView = view.findViewById(R.id.card_report_loans)
-        val cardAccounts: MaterialCardView = view.findViewById(R.id.card_report_accounts)
+        val cardLoanApps: CardView = view.findViewById(R.id.card_report_loan_apps)
+        val cardLoans: CardView = view.findViewById(R.id.card_report_loans)
+        val cardAccounts: CardView = view.findViewById(R.id.card_report_accounts)
 
         cardLoanApps.findViewById<ImageView>(R.id.icon).setImageDrawable(activity!!.getDrawable(R.drawable.applications))
         cardLoans.findViewById<ImageView>(R.id.icon).setImageDrawable(activity!!.getDrawable(R.drawable.loans))
