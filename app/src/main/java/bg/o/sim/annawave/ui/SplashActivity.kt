@@ -21,17 +21,20 @@ class SplashActivity : AppCompatActivity() {
         override fun doInBackground(vararg params: Unit) {
             /* PLACEHOLDER IMPL */
             /* if any async prep is necessary on application start, it can be place 'ere */
-            Thread.sleep(3_500)
+            Thread.sleep(3_001)
         }
 
         override fun onPostExecute(result: Unit) {
             val activity = contextReference.get()
             if (activity != null){
-                val logoView = activity.findViewById<ImageView>(R.id.logo_splash_activity)
+                val logoView: ImageView = activity.findViewById(R.id.logo_splash_activity)
                 val viewTransitionName = activity.getString(R.string.transition_name_logo)
                 val activityOptions = ActivityOptions.makeSceneTransitionAnimation(contextReference.get(), logoView, viewTransitionName)
 
-                activity.startActivity(Intent(activity, DashboardActivity::class.java), activityOptions.toBundle())
+                val intent = Intent(activity, DashboardActivity::class.java)
+//                intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+                activity.startActivity(intent, activityOptions.toBundle())
             }
         }
     }
@@ -50,7 +53,10 @@ class SplashActivity : AppCompatActivity() {
             if (systemUiVisible) hideSystemUI()
             else showSystemUI()
         }
+    }
 
+    override fun onResume() {
+        super.onResume()
         // run prep task, doing any necessary data preparation and start next Activity.
         AppPrepTask(this).execute()
     }

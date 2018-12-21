@@ -1,16 +1,30 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">AnnaWave</string>
 
+    <!--SHARED ELEMENT TRANSITION NAMES-->
+    <string name="transition_name_logo">transition_logo</string>
+
+    <!--IMAGE CONTENT DESCRIPTORS USED BY SCREEN READERS-->
+    <string name="content_description_logo">SoftwareGroup Logo</string>
+    <string name="content_description_splash_screen">Splash screen showing application logo.</string>
+
+    <!--NETWORKING ERROR MESSAGES-->
+    <string name="error_message_connection_time_out">Connection time out</string>
+    <string name="error_message_no_connection">Could not establish a connection to the server</string>
+    <string name="error_message_bad_request">Bad request. Ooops :$</string>
+    <string name="error_message_no_rout_to_host">Couldn\'t find rout to host</string>
+    <string name="error_message_rpc_error">RPC_ERROR!</string>
+
+
+    <!--TODO - ITEMS IN NEED OF SORTING-->
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
-    <string name="content_description_splash_screen">Spash screen showing application logo.</string>
-    <string name="title_activity_dashboard">DashboardActivity</string>
+
+    <string name="title_activity_dashboard">Dashboard Activity</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="nav_header_title">Android Studio</string>
     <string name="nav_header_subtitle">android.studio@android.com</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
-    <string name="transition_name_logo">transition_logo</string>
-    <string name="content_description_logo">SoftrwareGroup Logo</string>
 </resources>
