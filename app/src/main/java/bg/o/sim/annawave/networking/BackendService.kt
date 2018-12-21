@@ -1,12 +1,11 @@
 package bg.o.sim.annawave.networking
 
-import bg.o.sim.annawave.model.LoginData
+import bg.o.sim.annawave.model.LoginPerson
 import bg.o.sim.annawave.storage.baseUrl
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.jackson.JacksonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.GET
 
 // REQUEST METHODS
 const val REQUEST_IDENTITY_CHECK = "identity.check"
@@ -15,19 +14,14 @@ const val REQUEST_USER_USER_GET = "user.user.get"
 // END REQUEST METHODS
 
 interface BackendService {
-
-    @POST("/login")
-    fun login(@Body body: JsonRpcRequest): Call<LoginData>
-
-    @POST("/rpc")
-    fun silentLogin(@Body body: JsonRpcRequest): Call<LoginData>
-
+    @GET("/login/get/5c1c736122201b628cf44c9d")
+    fun login(): Call<LoginPerson>
 }
 
-var backendService: BackendService = createUt5Service()
+var BACKEND_SERVICE: BackendService = createBackendService()
 
-fun createUt5Service(): BackendService = Retrofit.Builder()
-        .client(UT5_CLIENT)
+fun createBackendService(): BackendService = Retrofit.Builder()
+        .client(BACKEND_CLIENT)
         .baseUrl(baseUrl)
         .addConverterFactory(
             WrappedJacksonConverterFactory(

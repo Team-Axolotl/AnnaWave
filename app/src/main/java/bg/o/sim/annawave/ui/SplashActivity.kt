@@ -9,6 +9,12 @@ import android.support.v7.app.AppCompatActivity
 import android.view.View.*
 import android.widget.ImageView
 import bg.o.sim.annawave.R
+import bg.o.sim.annawave.model.LoginPerson
+import bg.o.sim.annawave.networking.BACKEND_SERVICE
+import bg.o.sim.annawave.networking.BackendService
+import bg.o.sim.annawave.networking.HttpAsyncTask
+import bg.o.sim.annawave.storage.loggedInPerson
+import com.softwaregroup.underthekotlintree.util.showHttpErrorMessage
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.lang.ref.WeakReference
 
@@ -19,9 +25,20 @@ class SplashActivity : AppCompatActivity() {
         private val contextReference: WeakReference<Activity> = WeakReference(context)
 
         override fun doInBackground(vararg params: Unit) {
+            val task = HttpAsyncTask<LoginPerson> { response ->
+                if (response.isSuccess) {
+                    val loginData: LoginPerson = response.result!!
+                    loggedInPerson = loginData
+                } else {
+                    contextReference.get()?.showHttpErrorMessage(response)
+                }
+            }
+
+            task.execute(BACKEND_SERVICE.login())
+
             /* PLACEHOLDER IMPL */
             /* if any async prep is necessary on application start, it can be place 'ere */
-            Thread.sleep(3_001)
+//            Thread.sleep(3_001)
         }
 
         override fun onPostExecute(result: Unit) {
