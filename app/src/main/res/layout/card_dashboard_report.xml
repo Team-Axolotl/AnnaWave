@@ -4,9 +4,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     style="@style/Widget.MaterialComponents.CardView"
     android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     app:cardCornerRadius="6dp"
-    app:cardElevation="@dimen/elevationNormal"
-    android:layout_height="wrap_content">
+    app:cardElevation="@dimen/elevationNormal">
 
     <android.support.constraint.ConstraintLayout
         android:layout_width="wrap_content"
@@ -23,7 +23,7 @@
 
         <View
             android:id="@+id/top_half"
-            android:layout_width="0dp"
+            android:layout_width="match_parent"
             android:layout_height="0dp"
             app:layout_constraintBottom_toTopOf="@id/guide_horizontal_middle"
             app:layout_constraintEnd_toEndOf="parent"
