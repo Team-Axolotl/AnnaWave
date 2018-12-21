@@ -20,7 +20,7 @@ enum class ErrorCode(val code: Int, val messageStringId: Int) {
 }
 
 /** Client configuration for the [backendService] */
-val UT5_CLIENT: OkHttpClient = OkHttpClient.Builder()
+val BACKEND_CLIENT: OkHttpClient = OkHttpClient.Builder()
         .connectTimeout(30_000, TimeUnit.MILLISECONDS)
         .readTimeout(30_000, TimeUnit.MILLISECONDS)
         .addInterceptor(HttpLoggingInterceptor{ Log.d(HTTP_LOG, "\n $it \n")}.setLevel(HttpLoggingInterceptor.Level.BODY))
