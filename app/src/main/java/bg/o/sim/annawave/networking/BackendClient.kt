@@ -19,7 +19,7 @@ enum class ErrorCode(val code: Int, val messageStringId: Int) {
     RPC_FAIL(200, R.string.error_message_rpc_error)
 }
 
-/** Client configuration for the [backendService] */
+/** Client configuration for the [BACKEND_SERVICE] */
 val BACKEND_CLIENT: OkHttpClient = OkHttpClient.Builder()
     .connectTimeout(30_000, TimeUnit.MILLISECONDS)
     .readTimeout(30_000, TimeUnit.MILLISECONDS)

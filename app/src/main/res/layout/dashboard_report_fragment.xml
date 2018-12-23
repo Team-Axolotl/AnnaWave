@@ -6,6 +6,6 @@
     android:padding="@dimen/spacingMid"
     tools:context=".ui.DashboardReportFragment">
 
-    <include layout="@layout/dashborad_report_cards"/>
+    <include layout="@layout/dashborad_report_cards" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
