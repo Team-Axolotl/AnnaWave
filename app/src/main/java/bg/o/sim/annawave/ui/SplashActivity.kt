@@ -5,24 +5,21 @@ import android.app.ActivityOptions
 import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.View.*
 import android.widget.ImageView
 import bg.o.sim.annawave.R
 import bg.o.sim.annawave.model.LoginPerson
 import bg.o.sim.annawave.networking.BACKEND_SERVICE
-import bg.o.sim.annawave.networking.BackendService
 import bg.o.sim.annawave.networking.HttpAsyncTask
 import bg.o.sim.annawave.storage.loggedInPerson
-import com.softwaregroup.underthekotlintree.util.showHttpErrorMessage
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.lang.ref.WeakReference
 
 class SplashActivity : BaseActivity() {
     private var systemUiVisible: Boolean = false
 
-    private class AppPrepTask internal constructor(context: Activity) : AsyncTask<Unit, Unit, Unit>() {
-        private val contextReference: WeakReference<Activity> = WeakReference(context)
+    private class AppPrepTask internal constructor(context: BaseActivity) : AsyncTask<Unit, Unit, Unit>() {
+        private val contextReference: WeakReference<BaseActivity> = WeakReference(context)
 
         override fun doInBackground(vararg params: Unit) {
             val task = HttpAsyncTask<LoginPerson> { response ->
@@ -48,9 +45,7 @@ class SplashActivity : BaseActivity() {
                 val viewTransitionName = activity.getString(R.string.transition_name_logo)
                 val activityOptions = ActivityOptions.makeSceneTransitionAnimation(contextReference.get(), logoView, viewTransitionName)
 
-                val intent = Intent(activity, DashboardActivity::class.java)
-
-                activity.startActivity(intent, activityOptions.toBundle())
+                activity.startActivity(DashboardActivity::class.java, activityOptions.toBundle())
             }
         }
     }
