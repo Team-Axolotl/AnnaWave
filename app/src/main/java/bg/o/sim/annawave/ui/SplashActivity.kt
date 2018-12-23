@@ -18,7 +18,7 @@ import com.softwaregroup.underthekotlintree.util.showHttpErrorMessage
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.lang.ref.WeakReference
 
-class SplashActivity : AppCompatActivity() {
+class SplashActivity : BaseActivity() {
     private var systemUiVisible: Boolean = false
 
     private class AppPrepTask internal constructor(context: Activity) : AsyncTask<Unit, Unit, Unit>() {

@@ -14,7 +14,7 @@ import androidx.cardview.widget.CardView
 import bg.o.sim.annawave.R
 import bg.o.sim.annawave.storage.loggedInPerson
 
-class DashboardReportFragment : androidx.fragment.app.Fragment() {
+class DashboardReportFragment : BaseFragment() {
 
     companion object {
         fun newInstance() = DashboardReportFragment()
