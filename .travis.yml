@@ -9,5 +9,8 @@ android:
     - build-tools-28.0.3
     - android-28
 
+before_install:
+  - chmod +x gradlew
+
 
 
