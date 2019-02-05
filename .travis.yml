@@ -1,0 +1,13 @@
+language: android
+
+sudo: true
+
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-28.0.3
+    - android-28
+
+
+
