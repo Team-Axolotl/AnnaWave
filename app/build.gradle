@@ -31,9 +31,9 @@ dependencies {
 
     implementation 'androidx.appcompat:appcompat:1.1.0-alpha01'
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'com.google.android.material:material:1.1.0-alpha02'
+    implementation 'com.google.android.material:material:1.1.0-alpha03'
 
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha2'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.0-alpha3'
     implementation 'com.google.android:flexbox:1.1.0'
 
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
@@ -49,4 +49,7 @@ dependencies {
 
     androidTestImplementation 'androidx.test:runner:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
+
+    implementation "android.arch.navigation:navigation-fragment-ktx:1.0.0-beta01"
+    implementation "android.arch.navigation:navigation-ui-ktx:1.0.0-beta01"
 }
