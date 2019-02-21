@@ -10,8 +10,6 @@ private const val SH_PREFS_KEY_BASE_URL = "baseUrl"
 private const val SH_PREFS_LANG = "lang"
 private const val DEFAULT_LANGUAGE = "en"
 private const val NO_LANGUAGE_SET = "N\\A"
-private fun getDefaultUrl() = HttpUrl.Builder().scheme("http").host("192.168.1.7").port(19000).build()
-private fun noUrlSet() = HttpUrl.Builder().scheme("http").host("noUrlSet.placeholder").build()
 
 
 /** Values that need to be stored in-memory during runtime, and should be globally accessible go 'ere.*/
@@ -28,45 +26,22 @@ var lang: String = NO_LANGUAGE_SET
         saveLanguage(field)
     }
 
-var baseUrl: HttpUrl = noUrlSet()
-    get() {
-        if (field == noUrlSet()) field = getSavedBaseUrl() ?: getDefaultUrl()
-        return field
-    }
-    set(value) {
-        field = value
-        saveBaseUrl(field)
-    }
 
 fun setLanguage(language: String) {
     lang = language
     saveLanguage(lang)
 }
 
-fun saveBaseUrl(url: HttpUrl) {
-    baseUrl = url
-    ApplicationWrapper.accessibleInstance!!
-        .getSharedPreferences(SHARED_PREFS_SETTINGS, Context.MODE_PRIVATE)
-        .edit()
-        .putString(SH_PREFS_KEY_BASE_URL, baseUrl.toString())
-        .apply()
-}
-
-fun getSavedBaseUrl(): HttpUrl? = HttpUrl.parse(
-    ApplicationWrapper.accessibleInstance!!
-        .getSharedPreferences(SHARED_PREFS_SETTINGS, Context.MODE_PRIVATE)
-        .getString(SH_PREFS_KEY_BASE_URL, "N\\A")!!
-)
-
 fun saveLanguage(language: String) {
     lang = language
-    ApplicationWrapper.accessibleInstance!!
-        .getSharedPreferences(SHARED_PREFS_SETTINGS, Context.MODE_PRIVATE)
-        .edit()
-        .putString(SH_PREFS_LANG, lang)
-        .apply()
+//    ApplicationWrapper.accessibleInstance!!
+//        .getSharedPreferences(SHARED_PREFS_SETTINGS, Context.MODE_PRIVATE)
+//        .edit()
+//        .putString(SH_PREFS_LANG, lang)
+//        .apply()
 }
 
-fun getSavedLanguage(): String? = ApplicationWrapper.accessibleInstance!!
-    .getSharedPreferences(SHARED_PREFS_SETTINGS, Context.MODE_PRIVATE)
-    .getString(SH_PREFS_KEY_BASE_URL, null)!!
+fun getSavedLanguage(): String? = "TODO - Settings#getSavedLanguage"
+//    ApplicationWrapper.accessibleInstance!!
+//    .getSharedPreferences(SHARED_PREFS_SETTINGS, Context.MODE_PRIVATE)
+//    .getString(SH_PREFS_KEY_BASE_URL, null)!!

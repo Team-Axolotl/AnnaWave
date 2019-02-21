@@ -1,5 +1,6 @@
 package bg.o.sim.annawave.networking
 
+import bg.o.sim.annawave.storage.HttpErrorCode
 import retrofit2.Call
 
 /**
@@ -20,7 +21,7 @@ import retrofit2.Call
  */
 data class HttpCallResponse<T> private constructor(
     val startingCall: Call<T>,
-    val errorCode: ErrorCode? = null,
+    val errorCode: HttpErrorCode? = null,
     val exception: Throwable? = null,
     val result: T? = null,
     val isSuccess: Boolean
@@ -30,7 +31,7 @@ data class HttpCallResponse<T> private constructor(
             return HttpCallResponse(startingCall = call, result = result, isSuccess = true)
         }
 
-        fun <T> error(errorCode: ErrorCode, exception: Throwable, call: Call<T>): HttpCallResponse<T> {
+        fun <T> error(errorCode: HttpErrorCode, exception: Throwable, call: Call<T>): HttpCallResponse<T> {
             return HttpCallResponse(
                 errorCode = errorCode,
                 exception = exception,
