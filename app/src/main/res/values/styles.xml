@@ -10,6 +10,30 @@
         <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowSharedElementEnterTransition">@transition/content_transition</item>
         <item name="android:windowSharedElementExitTransition">@transition/content_transition</item>
+
+        <item name="android:imageButtonStyle">@style/AppImageButtonStyle</item>
+        <item name="imageButtonStyle">@style/AppImageButtonStyle</item>
+    </style>
+
+    <style name="AppImageButtonStyle" parent="android:Widget.ImageButton">
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+    </style>
+
+    <style name="ClickableTextView" parent="android:Widget.TextView">
+        <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
+        <item name="android:clickable">true</item>
+        <item name="android:focusable">true</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="TextInputWhite">
+        <item name="android:colorControlNormal">#ffffff</item>
+        <item name="android:colorControlActivated">#ffffff</item>
+        <item name="android:colorAccent">#ffffff</item>
+    </style>
+
+    <style name="EditTextTheme">
+        <item name="colorControlNormal">#ffffff</item>
     </style>
 
     <style name="SplashActivityTheme" parent="AppTheme">

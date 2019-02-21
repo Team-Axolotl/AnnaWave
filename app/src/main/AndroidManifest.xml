@@ -23,9 +23,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
         <activity
             android:name=".ui.DashboardActivity"
             android:label="@string/title_activity_dashboard"
+            android:theme="@style/AppTheme" />
+
+        <activity
+            android:name=".ui.LoginActivity"
             android:theme="@style/AppTheme" />
     </application>
 
