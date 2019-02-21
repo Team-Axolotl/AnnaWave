@@ -50,6 +50,8 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.10.0'
     implementation 'com.squareup.retrofit2:retrofit:2.5.0'
     implementation 'com.squareup.retrofit2:converter-jackson:2.5.0'
+    // networking: for development only [TODO - exclude in release builds?]
+    implementation 'com.squareup.retrofit2:retrofit-mock:2.5.0'
 
     // Dagger2 - dependency injection
     implementation 'com.google.dagger:dagger-android:2.21'
