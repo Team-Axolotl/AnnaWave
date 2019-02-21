@@ -11,6 +11,7 @@ import bg.o.sim.annawave.R
 import bg.o.sim.annawave.model.LoginPerson
 import bg.o.sim.annawave.networking.BackendService
 import bg.o.sim.annawave.networking.HttpAsyncTask
+import bg.o.sim.annawave.networking.model.LoginParams
 import bg.o.sim.annawave.storage.loggedInPerson
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.lang.ref.WeakReference
@@ -38,7 +39,8 @@ class SplashActivity : BaseActivity() {
                 }
             }
 
-            task.execute(backendService.login())
+            val loginParams = LoginParams("sa".toByteArray(), "123".toByteArray())
+            task.execute(backendService.login(loginParams))
 
             /* PLACEHOLDER IMPL */
             /* if any async prep is necessary on application start, it can be place 'ere */

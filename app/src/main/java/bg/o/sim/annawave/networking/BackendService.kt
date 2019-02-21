@@ -1,6 +1,7 @@
 package bg.o.sim.annawave.networking
 
 import bg.o.sim.annawave.model.LoginPerson
+import bg.o.sim.annawave.networking.model.LoginParams
 import retrofit2.Call
 import retrofit2.http.GET
 
@@ -12,7 +13,7 @@ const val REQUEST_USER_USER_GET = "user.user.get"
 
 interface BackendService {
     @GET("/login/get/5c1c736122201b628cf44c9d")
-    fun login(): Call<LoginPerson>
+    fun login(loginParams : LoginParams): Call<LoginPerson>
 }
 
 data class JsonRpcResponse<out T>(
