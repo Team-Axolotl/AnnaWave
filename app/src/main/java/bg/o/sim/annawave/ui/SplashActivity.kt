@@ -1,24 +1,31 @@
 package bg.o.sim.annawave.ui
 
-import android.app.Activity
 import android.app.ActivityOptions
-import android.content.Intent
 import android.os.AsyncTask
 import android.os.Bundle
+import android.os.PersistableBundle
 import android.view.View.*
 import android.widget.ImageView
+import bg.o.sim.annawave.ApplicationWrapper
 import bg.o.sim.annawave.R
 import bg.o.sim.annawave.model.LoginPerson
-import bg.o.sim.annawave.networking.BACKEND_SERVICE
+import bg.o.sim.annawave.networking.BackendService
 import bg.o.sim.annawave.networking.HttpAsyncTask
 import bg.o.sim.annawave.storage.loggedInPerson
 import kotlinx.android.synthetic.main.activity_splash.*
 import java.lang.ref.WeakReference
+import javax.inject.Inject
 
 class SplashActivity : BaseActivity() {
+
+    @Inject
+    lateinit var backendService: BackendService
     private var systemUiVisible: Boolean = false
 
-    private class AppPrepTask internal constructor(context: BaseActivity) : AsyncTask<Unit, Unit, Unit>() {
+    private class AppPrepTask internal constructor(
+        context: BaseActivity,
+        private val backendService: BackendService
+    ) : AsyncTask<Unit, Unit, Unit>() {
         private val contextReference: WeakReference<BaseActivity> = WeakReference(context)
 
         override fun doInBackground(vararg params: Unit) {
@@ -31,7 +38,7 @@ class SplashActivity : BaseActivity() {
                 }
             }
 
-            task.execute(BACKEND_SERVICE.login())
+            task.execute(backendService.login())
 
             /* PLACEHOLDER IMPL */
             /* if any async prep is necessary on application start, it can be place 'ere */
@@ -40,10 +47,11 @@ class SplashActivity : BaseActivity() {
 
         override fun onPostExecute(result: Unit) {
             val activity = contextReference.get()
-            if (activity != null){
+            if (activity != null) {
                 val logoView: ImageView = activity.findViewById(R.id.logo_splash_activity)
                 val viewTransitionName = activity.getString(R.string.transition_name_logo)
-                val activityOptions = ActivityOptions.makeSceneTransitionAnimation(contextReference.get(), logoView, viewTransitionName)
+                val activityOptions =
+                    ActivityOptions.makeSceneTransitionAnimation(contextReference.get(), logoView, viewTransitionName)
 
                 activity.startActivity(DashboardActivity::class.java, activityOptions.toBundle())
             }
@@ -53,6 +61,8 @@ class SplashActivity : BaseActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+
+        ApplicationWrapper.networkingComponent.inject(this)
 
         window.decorView.systemUiVisibility = SYSTEM_UI_FLAG_FULLSCREEN or SYSTEM_UI_FLAG_HIDE_NAVIGATION
         window.decorView.setOnSystemUiVisibilityChangeListener { visibility ->
@@ -69,7 +79,7 @@ class SplashActivity : BaseActivity() {
     override fun onResume() {
         super.onResume()
         // run prep task, doing any necessary data preparation and start next Activity.
-        AppPrepTask(this).execute()
+        AppPrepTask(this, backendService).execute()
     }
 
 
