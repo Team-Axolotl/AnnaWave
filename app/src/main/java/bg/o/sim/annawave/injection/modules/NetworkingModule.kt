@@ -16,7 +16,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-class NetworkingModule(private val networkingConfig: NetworkingConfig) {
+open class NetworkingModule(private val networkingConfig: NetworkingConfig) {
 
     @Provides
     @Singleton
@@ -51,7 +51,7 @@ class NetworkingModule(private val networkingConfig: NetworkingConfig) {
 
     @Provides
     @Singleton
-    fun getBackendService(httpClient: OkHttpClient, converterFactory: Converter.Factory): BackendService {
+    open fun getBackendService(httpClient: OkHttpClient, converterFactory: Converter.Factory): BackendService {
         return Retrofit.Builder()
             .client(httpClient)
             .baseUrl(networkingConfig.getUrl())
