@@ -16,6 +16,11 @@ android {
         versionName "[alpha] Arsenic" /* Similarly to this application, Arsenic is one of the most toxic elements that can be found ~
                                             ~ Read more: https://www.lenntech.com/periodic/elements/as.htm#Health%20effects%20of%20arsenic#ixzz5aHB12OCA*/
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // Mocking BuildConfig field default values
+        buildConfigField "boolean", "IS_NET_MOCK", "false"
+        buildConfigField "boolean", "IS_DAO_MOCK", "false"
+
     }
     buildTypes {
         debug {
@@ -25,11 +30,44 @@ android {
         }
 
         release {
-            buildConfigField "boolean", "IS_MOCK", "false"
-            minifyEnabled false
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions "module", "isMock"
+
+
+    productFlavors {
+        ext {
+            configField = []
+        }
+
+        net {
+            dimension "module"
+            configField.add "IS_NET_MOCK"
+        }
+        dao {
+            dimension "module"
+            configField.add "IS_DAO_MOCK"
+        }
+
+        allMods {
+            dimension "module"
+            configField.add "IS_NET_MOCK"
+            configField.add "IS_DAO_MOCK"
+        }
+
+        standard {
+            dimension "isMock"
+            configField.each { buildConfigField "boolean", it, "false" }
+        }
+        mock {
+            dimension "isMock"
+            configField.each { buildConfigField "boolean", it, "true" }
+        }
+    }
+
 }
 
 dependencies {
