@@ -18,8 +18,8 @@ import retrofit2.mock.Calls
 
 
 @Module
-class MockNetworkingModule(networkingConfig: NetworkingConfig) : NetworkingModule(networkingConfig) {
-    override fun getBackendService(httpClient: OkHttpClient, converterFactory: Converter.Factory): BackendService {
+class MockNetworkingModule(networkingConfig: NetworkingConfig) {
+    fun getBackendService(httpClient: OkHttpClient, converterFactory: Converter.Factory): BackendService {
         return MockBackendService()
     }
 }

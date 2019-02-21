@@ -56,6 +56,7 @@ class SplashActivity : BaseActivity() {
                     ActivityOptions.makeSceneTransitionAnimation(contextReference.get(), logoView, viewTransitionName)
 
                 activity.startActivity(DashboardActivity::class.java, activityOptions.toBundle())
+                contextReference.get()?.finishAfterTransition()
             }
         }
     }
@@ -83,7 +84,6 @@ class SplashActivity : BaseActivity() {
         // run prep task, doing any necessary data preparation and start next Activity.
         AppPrepTask(this, backendService).execute()
     }
-
 
     private fun hideSystemUI() {
         window.decorView.systemUiVisibility = (SYSTEM_UI_FLAG_LAYOUT_STABLE

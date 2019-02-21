@@ -1,9 +1,11 @@
 package bg.o.sim.annawave.injection.modules
 
 import android.app.Application
+import bg.o.sim.annawave.BuildConfig
 import bg.o.sim.annawave.storage.NetworkingConfig
 import bg.o.sim.annawave.networking.BackendService
 import bg.o.sim.annawave.networking.JacksonObjMapper
+import bg.o.sim.annawave.to_debug_a_mocking_bird.injection.modules.MockNetworkingModule
 import dagger.Module
 import dagger.Provides
 import okhttp3.Cache
@@ -16,7 +18,7 @@ import java.util.concurrent.TimeUnit
 import javax.inject.Singleton
 
 @Module
-open class NetworkingModule(private val networkingConfig: NetworkingConfig) {
+class NetworkingModule(private val networkingConfig: NetworkingConfig) {
 
     @Provides
     @Singleton
@@ -52,6 +54,9 @@ open class NetworkingModule(private val networkingConfig: NetworkingConfig) {
     @Provides
     @Singleton
     open fun getBackendService(httpClient: OkHttpClient, converterFactory: Converter.Factory): BackendService {
+        @Suppress("ConstantConditionIf") // Constant per buildType, not globally
+        if (BuildConfig.IS_MOCK) return MockNetworkingModule(networkingConfig).getBackendService(httpClient, converterFactory)
+
         return Retrofit.Builder()
             .client(httpClient)
             .baseUrl(networkingConfig.getUrl())

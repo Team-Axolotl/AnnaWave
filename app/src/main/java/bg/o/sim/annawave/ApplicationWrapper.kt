@@ -5,6 +5,7 @@ import bg.o.sim.annawave.injection.modules.ApplicationModule
 import bg.o.sim.annawave.injection.modules.HttpInterceptorModule
 import bg.o.sim.annawave.injection.modules.NetworkingModule
 import bg.o.sim.annawave.storage.NetworkingConfig
+import bg.o.sim.annawave.to_debug_a_mocking_bird.injection.modules.MockNetworkingModule
 import bg.o.sim.annawave.ui.BaseActivity
 import bg.o.sim.annawave.ui.SplashActivity
 import dagger.Component
@@ -26,7 +27,7 @@ class ApplicationWrapper : Application() {
 
         // TODO - temp - depInject dev only instantiation
         val networkingConfig = NetworkingConfig(
-            baseUrl = "dicks",
+            baseUrl = "0.0.0.0",
             port = 8,
             useHttpCache = false
         )
