@@ -10,11 +10,26 @@
     tools:context=".ui.LoginActivity">
 
     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/left_poligons"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent" />
+
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/right_poligons"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <ImageView
         android:id="@+id/logo"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacingLarge"
-        android:layout_marginTop="@dimen/spacingLarge"
+        android:layout_marginStart="@dimen/spacingMid"
+        android:layout_marginTop="@dimen/spacingSmall"
         android:contentDescription="@string/content_description_logo"
         android:padding="@dimen/paddingNormal"
         android:scaleType="fitCenter"
@@ -27,16 +42,18 @@
         android:id="@+id/button_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/spacingLarge"
+        android:layout_marginEnd="@dimen/spacingMidHigh"
         android:padding="@dimen/spacingSmall"
         android:src="@drawable/settings"
+        app:layout_constraintBottom_toBottomOf="@+id/logo"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@id/logo" />
+        app:layout_constraintTop_toTopOf="@+id/logo" />
 
     <TextView
         android:id="@+id/message_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacingMid"
         android:layout_marginBottom="@dimen/spacingMid"
         android:fontFamily="sans-serif-medium"
         android:lineSpacingExtra="5sp"
@@ -46,16 +63,15 @@
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/separator_pill"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintVertical_chainStyle="packed" />
 
     <View
         android:id="@+id/separator_pill"
         android:layout_width="15dp"
         android:layout_height="3dp"
-        android:layout_marginBottom="@dimen/spacingMid"
+        android:layout_marginBottom="@dimen/spacingSmall"
         android:background="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/message_flavour"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,83 +91,77 @@
         android:textStyle="normal"
         app:layout_constraintBottom_toTopOf="@+id/layout_user_name"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/separator_pill" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_user_name"
-        android:layout_width="400dp"
-        android:layout_height="56dp"
+        style="@style/LoginTextInputLayout"
         android:layout_marginBottom="2dp"
         android:hint="@string/label_user_name"
-        android:textColorHint="@color/white"
-        app:colorControlActivated="@color/white"
-        app:hintTextColor="@color/white"
         app:layout_constraintBottom_toTopOf="@+id/layout_password"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/message_flavour">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_user_name"
-            style="@style/TextInputWhite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
+            style="@style/LoginTextInputEditText"
             android:drawableEnd="@drawable/icon_user_name"
-            android:nextFocusDown="@id/input_password"
-            android:paddingEnd="18dp"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            app:colorControlActivated="@color/white"
             tools:ignore="RtlSymmetry" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_password"
-        style="@style/TextInputWhite"
-        android:layout_width="400dp"
-        android:layout_height="56dp"
-        android:layout_marginBottom="@dimen/spacingHuge"
+        style="@style/LoginTextInputLayout"
         android:hint="@string/label_password"
-        android:textColorHint="@color/white"
-        app:hintTextColor="@color/white"
-        app:layout_constraintBottom_toTopOf="@+id/button_login_container"
+        app:layout_constraintBottom_toTopOf="@+id/error_modal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_user_name"
-        app:passwordToggleEnabled="true"
-        app:passwordToggleTint="@color/white">
+        app:layout_constraintTop_toBottomOf="@+id/layout_user_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/input_password"
-            style="@style/TextInputWhite"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:backgroundTint="@color/white"
+            style="@style/LoginTextInputEditText"
+            android:drawableEnd="@drawable/login_padlock"
             android:imeActionLabel="@string/label_login"
             android:inputType="textPassword"
-            android:paddingEnd="@dimen/spacingSmall"
-            android:textColor="@color/white"
             tools:ignore="RtlSymmetry" />
     </com.google.android.material.textfield.TextInputLayout>
 
+    <TextView
+        android:id="@+id/error_modal"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/spacingMid"
+        android:background="@color/redWarning"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:padding="@dimen/spacingSmall"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        android:textStyle="normal"
+        android:visibility="gone"
+        app:layout_constraintBottom_toTopOf="@id/button_login_container"
+        app:layout_constraintEnd_toEndOf="@id/layout_password"
+        app:layout_constraintStart_toStartOf="@id/layout_password"
+        app:layout_constraintTop_toBottomOf="@id/layout_password"
+        tools:text="Invalid credentials. \n You have two more attempts."
+        tools:visibility="visible" />
+
     <androidx.cardview.widget.CardView
         android:id="@+id/button_login_container"
-        style="TextInputWhite"
         android:layout_width="125dp"
         android:layout_height="36dp"
+        android:layout_marginTop="@dimen/spacingMid"
         android:layout_marginBottom="@dimen/spacingLarge"
         app:cardCornerRadius="18dp"
-        app:layout_constraintBottom_toTopOf="@+id/button_reset_password"
+        app:layout_constraintBottom_toTopOf="@+id/button_reset_password_container"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layout_password">
+        app:layout_constraintTop_toBottomOf="@id/error_modal">
 
         <TextView
             android:id="@+id/button_login"
@@ -161,41 +171,39 @@
             android:fontFamily="sans-serif"
             android:singleLine="true"
             android:text="@string/label_login"
-            android:textColor="#007ebe"
+            android:textColor="@color/textBlue"
             android:textSize="14sp"
             android:textStyle="normal" />
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/button_reset_password"
-        style="@style/ClickableTextView"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/button_reset_password_container"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="sans-serif"
-        android:text="@string/label_forgot_password"
-        android:textColor="#ffffff"
-        android:textSize="16sp"
-        android:textStyle="normal"
+        android:layout_height="36dp"
+        android:layout_marginBottom="@dimen/spacingLarge"
+        app:cardBackgroundColor="#00FFFFFF"
+        app:cardCornerRadius="18dp"
+        app:cardElevation="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button_login_container" />
+        app:layout_constraintTop_toBottomOf="@+id/button_login_container">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/left_poligons"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent" />
+        <TextView
+            android:id="@+id/button_reset_password"
+            style="@style/ClickableTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="sans-serif"
+            android:paddingStart="@dimen/spacingSmall"
+            android:paddingEnd="@dimen/spacingSmall"
+            android:text="@string/label_forgot_password"
+            android:textAlignment="center"
+            android:textColor="#ffffff"
+            android:textSize="16sp"
+            android:textStyle="normal" />
 
-
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/right_poligons"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+    </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

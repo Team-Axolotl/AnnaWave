@@ -2,6 +2,7 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorAccent">@color/white</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowTranslucentStatus">true</item>
         <item name="android:navigationBarColor">@color/black_overlay</item>
@@ -11,11 +12,10 @@
         <item name="android:windowSharedElementEnterTransition">@transition/content_transition</item>
         <item name="android:windowSharedElementExitTransition">@transition/content_transition</item>
 
-        <item name="android:imageButtonStyle">@style/AppImageButtonStyle</item>
-        <item name="imageButtonStyle">@style/AppImageButtonStyle</item>
+        <item name="imageButtonStyle">@style/AppTheme.ImageButtonStyle</item>
     </style>
 
-    <style name="AppImageButtonStyle" parent="android:Widget.ImageButton">
+    <style name="AppTheme.ImageButtonStyle" parent="android:Widget.ImageButton">
         <item name="android:background">?attr/selectableItemBackgroundBorderless</item>
     </style>
 
@@ -26,15 +26,6 @@
         <item name="android:gravity">center</item>
     </style>
 
-    <style name="TextInputWhite">
-        <item name="android:colorControlNormal">#ffffff</item>
-        <item name="android:colorControlActivated">#ffffff</item>
-        <item name="android:colorAccent">#ffffff</item>
-    </style>
-
-    <style name="EditTextTheme">
-        <item name="colorControlNormal">#ffffff</item>
-    </style>
 
     <style name="SplashActivityTheme" parent="AppTheme">
         <item name="colorPrimaryDark">@color/blueSplash</item>
@@ -43,5 +34,26 @@
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <style name="LoginTextInputEditText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:nextFocusDown">@id/input_password</item>
+        <item name="android:paddingEnd">18dp</item>
+        <item name="android:paddingStart">@dimen/spacingSmall</item>
+        <item name="android:singleLine">true</item>
+        <item name="android:background">@drawable/underline</item>
+        <item name="android:textColor">@color/white</item>
+    </style>
+
+    <style name="LoginTextInputLayout">
+        <item name="android:colorAccent">@color/white</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">56dp</item>
+        <item name="android:layout_marginStart">@dimen/spacingMid</item>
+        <item name="android:layout_marginEnd">@dimen/spacingMid</item>
+        <item name="layout_constraintWidth_max">400dp</item>
+        <item name="android:textColorHint">@color/white</item>
+    </style>
 
 </resources>

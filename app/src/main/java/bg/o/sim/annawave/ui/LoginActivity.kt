@@ -1,9 +1,12 @@
 package bg.o.sim.annawave.ui
 
+import android.content.res.ColorStateList
 import android.os.AsyncTask
 import android.os.Bundle
 import android.view.KeyEvent
+import android.view.View
 import android.view.inputmethod.EditorInfo
+import androidx.core.content.ContextCompat
 import bg.o.sim.annawave.ApplicationWrapper
 import bg.o.sim.annawave.R
 import bg.o.sim.annawave.model.LoginPerson
@@ -14,6 +17,11 @@ import bg.o.sim.annawave.storage.loggedInPerson
 import kotlinx.android.synthetic.main.activity_login.*
 import java.lang.ref.WeakReference
 import javax.inject.Inject
+import android.app.Activity
+import android.view.inputmethod.InputMethodManager
+
+
+
 
 class LoginActivity : BaseActivity() {
 
@@ -26,7 +34,7 @@ class LoginActivity : BaseActivity() {
 
         ApplicationWrapper.networkingComponent.inject(this)
         button_login.setOnClickListener {
-            if (validInput()) {
+            if (validateInput()) {
                 toast("[TODO - move to dialog] Logging in.") // TODO - move to dialog
                 LoginTask(this, backendService).execute()
             }
@@ -42,27 +50,44 @@ class LoginActivity : BaseActivity() {
         }
     }
 
-    private fun validInput(): Boolean {
-        // TODO - remove magi cnumbers @ length
-        var valid = true
+    private fun validateInput(): Boolean {
+        // TODO - remove magic numbers @ length
+        // TODO - remove magic strings
+        // TODO - once config is implemented, add check for attempt-count lock.
 
         if (input_user_name.text!!.length < 2) {
-            valid = false
-            input_user_name.error = "Please enter a valid user id!"
-        } else {
-            input_user_name.error = null
+            setError("Please enter a valid user id!")
+            return false
         }
 
         if (input_password.text!!.length < 3) {
-            valid = false
-            input_password.error = "Please enter your password!"
-        } else {
-            input_password.error = null
+            setError("Please enter a valid password!")
+            return false
         }
 
-        return valid
+        clearError()
+        return true
     }
 
+
+
+    private fun setError(error: String) {
+        input_user_name.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.redWarning))
+        input_password.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.redWarning))
+
+        error_modal.visibility = View.VISIBLE
+        error_modal.text = error
+
+        hideKeyboard()
+    }
+
+    private fun clearError() {
+        input_user_name.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white))
+        input_password.backgroundTintList = ColorStateList.valueOf(ContextCompat.getColor(this, R.color.white))
+
+        error_modal.visibility = View.GONE
+        error_modal.text = ""
+    }
 
     private fun getPassword(): ByteArray = input_password.text.toString().toByteArray()
 
@@ -117,4 +142,15 @@ class LoginActivity : BaseActivity() {
             activity.startActivity(DashboardActivity::class.java, null)
         }
     }
+}
+
+fun Activity.hideKeyboard() {
+    val imm = getSystemService(Activity.INPUT_METHOD_SERVICE) as InputMethodManager
+    //Find the currently focused view, so we can grab the correct window token from it.
+    var view = currentFocus
+    //If no view currently has focus, create a new one, just so we can grab a window token from it
+    if (view == null) {
+        view = View(this)
+    }
+    imm.hideSoftInputFromWindow(view.windowToken, 0)
 }
