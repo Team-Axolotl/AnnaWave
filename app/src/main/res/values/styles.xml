@@ -5,10 +5,8 @@
         <item name="colorAccent">@color/white</item>
         <item name="android:windowContentTransitions">true</item>
         <item name="android:windowTranslucentStatus">true</item>
-        <item name="android:navigationBarColor">@color/black_overlay</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
         <item name="android:windowActivityTransitions">true</item>
-        <item name="android:fitsSystemWindows">true</item>
         <item name="android:windowSharedElementEnterTransition">@transition/content_transition</item>
         <item name="android:windowSharedElementExitTransition">@transition/content_transition</item>
 

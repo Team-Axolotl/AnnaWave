@@ -3,6 +3,7 @@ package bg.o.sim.annawave.ui
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
@@ -31,7 +32,8 @@ abstract class BaseActivity : AppCompatActivity() {
     /** Show error ui elements */
     fun showErrorMessage(message: String) {
         // todo - impl proper
-        val snek: Snackbar = Snackbar.make(window.decorView, message, Snackbar.LENGTH_INDEFINITE)
+        val view = this.currentFocus?: View(this)
+        val snek: Snackbar = Snackbar.make(view, message, Snackbar.LENGTH_INDEFINITE)
         snek.setAction(android.R.string.ok) { snek.dismiss() }.show()
     }
 
