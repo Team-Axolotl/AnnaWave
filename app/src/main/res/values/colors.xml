@@ -3,11 +3,10 @@
 
     <color name="white">#FFFFFFFF</color>
 
-    <color name="colorPrimary">@color/blueSplash</color>
-    <color name="colorPrimaryDark">@color/blueMainDark</color>
+    <color name="colorPrimary">@color/blueMain</color>
     <color name="colorAccent">#D81B60</color>
 
-    <color name="black_overlay">#66000000</color>
+    <color name="blackOverlay">#66000000</color>
     <color name="blueSplash">#005CB9</color>
 
 
@@ -16,8 +15,5 @@
 
     <color name="redWarning">#df7d7e</color>
 
-
-    <!--CUSTOM VIEW COLORS-->
-    <color name="textInputEditTextUnderlineErrorMarkerDefaultUnderlineColor">@color/white</color>
     <color name="textBlue">#007ebe</color>
 </resources>

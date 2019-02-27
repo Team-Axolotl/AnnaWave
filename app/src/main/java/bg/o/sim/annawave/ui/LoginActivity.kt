@@ -21,8 +21,6 @@ import android.app.Activity
 import android.view.inputmethod.InputMethodManager
 
 
-
-
 class LoginActivity : BaseActivity() {
 
     @Inject
@@ -34,6 +32,7 @@ class LoginActivity : BaseActivity() {
 
         ApplicationWrapper.networkingComponent.inject(this)
         button_login.setOnClickListener {
+            hideKeyboard()
             if (validateInput()) {
                 toast("[TODO - move to dialog] Logging in.") // TODO - move to dialog
                 LoginTask(this, backendService).execute()
@@ -133,7 +132,7 @@ class LoginActivity : BaseActivity() {
 
             /* PLACEHOLDER IMPL */
             /* if any async prep is necessary on application start, it can be place 'ere */
-            Thread.sleep(3_001)
+            Thread.sleep(2_001)
         }
 
         private fun openDashboardActivity() {
