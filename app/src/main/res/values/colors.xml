@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <color name="white">#FFFFFFFF</color>
+
     <color name="colorPrimary">@color/blueSplash</color>
     <color name="colorPrimaryDark">@color/blueMainDark</color>
     <color name="colorAccent">#D81B60</color>
@@ -10,4 +13,11 @@
 
     <color name="blueMain">#0099ff</color>
     <color name="blueMainDark">#4158f3</color>
+
+    <color name="redWarning">#df7d7e</color>
+
+
+    <!--CUSTOM VIEW COLORS-->
+    <color name="textInputEditTextUnderlineErrorMarkerDefaultUnderlineColor">@color/white</color>
+    <color name="textBlue">#007ebe</color>
 </resources>

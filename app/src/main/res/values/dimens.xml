@@ -9,5 +9,9 @@
     <dimen name="statusBarHeight">25dp</dimen>
     <dimen name="radiusNormal">8dp</dimen>
     <dimen name="elevationNormal">4dp</dimen>
-    <dimen name="spacingMid">14dp</dimen>
+    <dimen name="spacingMid">16dp</dimen>
+    <dimen name="spacingMidHigh">24dp</dimen>
+    <dimen name="spacingLarge">32dp</dimen>
+    <dimen name="spacingHuge">52dp</dimen>
+    <dimen name="spacingSmall">8dp</dimen>
 </resources>

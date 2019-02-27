@@ -5,9 +5,8 @@ import bg.o.sim.annawave.injection.modules.ApplicationModule
 import bg.o.sim.annawave.injection.modules.HttpInterceptorModule
 import bg.o.sim.annawave.injection.modules.NetworkingModule
 import bg.o.sim.annawave.storage.NetworkingConfig
-import bg.o.sim.annawave.to_debug_a_mocking_bird.injection.modules.MockNetworkingModule
 import bg.o.sim.annawave.ui.BaseActivity
-import bg.o.sim.annawave.ui.SplashActivity
+import bg.o.sim.annawave.ui.LoginActivity
 import dagger.Component
 import javax.inject.Singleton
 
@@ -58,5 +57,5 @@ interface ApplicationComponent {
 @Singleton
 @Component(modules = [NetworkingModule::class, HttpInterceptorModule::class], dependencies = [Application::class])
 interface NetworkingComponent {
-    fun inject(activity: SplashActivity)
+    fun inject(activity: LoginActivity)
 }
